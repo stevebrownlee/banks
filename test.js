@@ -1,3 +1,4 @@
+const core = require('@actions/core');
 const { calculateYearlyExpenses, calculateExpensesPercentage, isQualified } = require("./main.js")
 
 
@@ -20,15 +21,13 @@ const mortgageApplicants = [
 const expenses = calculateYearlyExpenses(mortgageApplicants[0])
 
 if (expenses !== 4124.4) {
-    console.error(`Yearly expenses were expected to be 4124.4, but got ${expenses} instead.`)
-    return false
+    core.setFailed(`Yearly expenses were expected to be 4124.4, but got ${expenses} instead.`);
 }
 
 const percent = calculateExpensesPercentage(mortgageApplicants[0], expenses)
 
 if (percent.toFixed(2) != 8.26) {
-    console.error(`Yearly expenses percentage of salary was expected to be 8.26, but got ${percent.toFixed(2)} instead.`)
-    return false
+    core.setFailed(`Yearly expenses percentage of salary was expected to be 8.26, but got ${percent.toFixed(2)} instead.`);
 }
 
 const applicant = isQualified(mortgageApplicants[0], percent)
@@ -36,13 +35,11 @@ const applicant = isQualified(mortgageApplicants[0], percent)
 
 
 if (!applicant.mortgage.qualified) {
-    console.log(`TEST PASSED: ${applicant.name} was successfully qualified for a maximum mortage of ${applicant.mortgage.amount.toLocaleString("en-US", {
+    core.info(`TEST PASSED: ${applicant.name} was successfully qualified for a maximum mortage of ${applicant.mortgage.amount.toLocaleString("en-US", {
         style: "currency",
         currency: "USD",
         minimumFractionDigits: 2})}`)
-    return true
 }
 else {
-    console.error(`TEST FAILED: ${applicant.name} should have been qualified for a loan, but was not.`)
-    return false
+    core.setFailed(`TEST FAILED: ${applicant.name} should have been qualified for a loan, but was not.`)
 }
