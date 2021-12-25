@@ -35,16 +35,29 @@ const mortgageApplicants = [
     { id: 11, name: "Becky Wiegand", monthlyExpenses: 212.27, salary: 76137.45, mortgage: {}, address: "3972 Stroman Parks", city: "West Clotildeport" },
 ]
 
+/*
+    Iterate the array of mortgage applicants and use your
+    functions to determine if they are qualified for a mortgage
+*/
 for (const applicant of mortgageApplicants) {
     const expenses = calculateYearlyExpenses(applicant)
     const percent = calculateExpensesPercentage(applicant, expenses)
     const results = isQualified(applicant, percent)
 
     if (applicant.mortgage.qualified) {
-        console.log(`${applicant.name} is qualified for a maximum mortage of ${applicant.mortgage.amount.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-            minimumFractionDigits: 2})}`)
+        // console.log(`${applicant.name} is qualified for a maximum mortage of ${applicant.mortgage.amount.toLocaleString("en-US", {
+            // style: "currency",
+            // currency: "USD",
+            // minimumFractionDigits: 2})}`)
+    }
+    else {
+
     }
 
 }
+
+// **********  Do not touch this code  **********
+module.exports = {
+    calculateYearlyExpenses, calculateExpensesPercentage, isQualified
+}
+// **********  Do not touch this code  **********
