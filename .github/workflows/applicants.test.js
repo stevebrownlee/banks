@@ -1,4 +1,4 @@
-const { calculateYearlyExpenses, calculateExpensesPercentage, isQualified } = require("./main.js")
+const { calculateYearlyExpenses, calculateExpensesPercentage, isQualified } = require("../../main.js")
 
 
 const applicant = { id: 1, name: "James Runolfsdottir", monthlyExpenses: 343.7, salary: 49938.68, mortgage: {}, address: "866 Weissnat Forks", city: "South Dario" }
