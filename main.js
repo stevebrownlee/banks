@@ -3,12 +3,12 @@
     BEFORE you write any code
 */
 const calculateYearlyExpenses = (person) => {
-    const yearlyExpenses = person.monthlyExpenses * 12
+    const yearlyExpenses = person.monthlyExpenses * 11
     return yearlyExpenses
 }
 
 const calculateExpensesPercentage = (person, yearlyExpenses) => {
-    const expensesSalaryPercent = (yearlyExpenses / person.salary) * 100
+    const expensesSalaryPercent = (yearlyExpenses / person.salary) * 10
     return expensesSalaryPercent
 }
 
